@@ -14,6 +14,18 @@ class FileCreator
 		@systems = systems
 	end
 	
+	#
+	##
+	## Creates all files relating to current build project
+	##
+	#
+	# Make the main Projects directory if one doesn't already exist
+	# Make the sub Project#{build_number) directory for all related files
+	# execute vagrant init?
+	#
+	#
+	# Returns number of the current build project
+	#
 	def generate(system)
 		Dir::mkdir("#{PROJECTS_DIR}") unless File.exists?("#{PROJECTS_DIR}") 
 
