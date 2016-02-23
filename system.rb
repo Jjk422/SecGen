@@ -23,7 +23,12 @@ class System
         @networks = networks
         @services = services
     end
-
+    
+    #
+    # Checks to see if the base is valid
+    #
+    # return true if base is valid and false if base is not valid
+    #
     def is_valid_base
         valid_base = Conf.bases
 
@@ -40,23 +45,27 @@ end
 
 class Network
     attr_accessor :name, :range
-
+    
+    # Initialise name and range into the instance variables @name and @range with the value of ""
     def initialize(name="", range="")
         @name = name
         @range = range
     end
-
+    
+    # Return the string of the @name variable plus the @range variable 
     def id
         hash = @name + @range
         return hash
         # return string that connects everything to 1 massive string
     end
-
+    
+    # 
     def eql? other
         # checks if name matches networks.xml from boxes.xml
         other.kind_of?(self.class) && @name == other.name
     end
-
+    
+    # Hashes the @type instance variable?
     def hash
         @type.hash
     end
@@ -64,22 +73,29 @@ end
 
 class Service
     attr_accessor :name, :type, :details, :puppets
-
+    
+    #
+    # Initialise the @name, @type, @details instance variables with the string value of ""
+    # Initialise the @puppets instance variable with the value of an empty array
+    #
     def initialize(name="", type="", details="", puppets=[])
         @name = name
         @type = type
         @details = details
         @puppets = puppets
     end
-
+    
+    #
     def eql? other
         other.kind_of?(self.class) && @type == other.type
     end
-
+    
+    #
     def hash
         @type.hash
     end
     
+    #
     def id
         return @type
     end
