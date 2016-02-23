@@ -24,6 +24,7 @@ File.open('lib/commandui/logo/logo.txt', 'r') do |f1|
 end
 puts "\e[0m"
 
+# Display help menu
 def usage
 	puts 'Usage:
    ' + $0 + ' [options]
@@ -37,6 +38,16 @@ def usage
 	exit
 end
 
+
+# Grab all system information from boxes.xml and create vagrant file from that information
+#
+# Creates systems variable from systemReader.rb, systemReader class, systems method
+# Systems variable contains all valid vulnerabilities, services and networks specified by user.
+#
+# returns build number
+# build number contains a file  
+#
+#
 def build_config
 	puts 'Reading configuration file for virtual machines you want to create'
 
@@ -50,11 +61,13 @@ def build_config
 	return build_number
 end
 
+# 
 def build_vms(build_number)
 	vagrant = VagrantController.new
 	vagrant.vagrant_up(build_number)
 end
 
+#
 def run
 	build_number = build_config()
 	build_vms(build_number)
