@@ -1,12 +1,8 @@
-# Security Simulator
+# Security Scenario Generator (SecGen)
+# 
+# SecGen allows you to generate a large amount of virtual machines and install vulnerable software to create a learning environment to your specifications.
 #
-# $Id$
-#
-# $Revision$
-#
-# This program allows you to use a large amount of virtual machines and install vulnerable software to create a learning environment.
-#
-# By: Lewis Ardern (Leeds Metropolitan University)
+# By: Lewis Ardern (Leeds Metropolitan University) <-- Should this be deleted?
 
 require 'getoptlong'
 require 'fileutils'
@@ -24,6 +20,7 @@ File.open('lib/commandui/logo/logo.txt', 'r') do |f1|
 end
 puts "\e[0m"
 
+# Display help menu
 def usage
 	puts 'Usage:
    ' + $0 + ' [options]
@@ -37,6 +34,18 @@ def usage
 	exit
 end
 
+
+# Grab all system information from boxes.xml and create vagrant file from that information
+#
+# Creates systems variable from systemReader.rb, systemReader class, systems method
+# Systems variable contains all valid vulnerabilities, services and networks specified by user.
+#
+# Creates all files related to the new project (virtual machine?)
+# All files created in new Projects[build number] directory
+#
+# returns build number from fileCreator.rb, fileCreator class, generate method
+# build number contains the number of created project directory
+#
 def build_config
 	puts 'Reading configuration file for virtual machines you want to create'
 
@@ -50,11 +59,20 @@ def build_config
 	return build_number
 end
 
+# Build vms using vagrant.rb, vagrantController class, vagrant_up method
+# Executes command "cd #{PROJECTS_DIR}/Project#{build_number}/; vagrant up" in command line
+#
 def build_vms(build_number)
 	vagrant = VagrantController.new
 	vagrant.vagrant_up(build_number)
 end
 
+# Creates variable build_number containing result of build_config() method in securitysimulator.rb
+# Project#{build_number} is the name of the folder below the main Project directory
+#
+# Executes build_vms(result of build_config() method) method in securitysimulator.rb
+# build_vms builds the vms to the specifications given in BOXES_XML
+#
 def run
 	build_number = build_config()
 	build_vms(build_number)
