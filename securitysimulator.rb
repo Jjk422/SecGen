@@ -1,10 +1,6 @@
-# Security Simulator
-#
-# $Id$
-#
-# $Revision$
-#
-# This program allows you to use a large amount of virtual machines and install vulnerable software to create a learning environment.
+# Security Scenario Generator (SecGen)
+# 
+# SecGen allows you to generate a large amount of virtual machines and install vulnerable software to create a learning environment to your specifications.
 #
 # By: Lewis Ardern (Leeds Metropolitan University)
 
