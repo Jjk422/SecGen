@@ -2,7 +2,7 @@
 # 
 # SecGen allows you to generate a large amount of virtual machines and install vulnerable software to create a learning environment to your specifications.
 #
-# By: Lewis Ardern (Leeds Metropolitan University)
+# By: Lewis Ardern (Leeds Metropolitan University) <-- Should this be deleted?
 
 require 'getoptlong'
 require 'fileutils'
