@@ -25,9 +25,9 @@ class System
     end
     
     #
-    # Checks to see if the base is valid
+    # Checks to see if the base is valid?
     #
-    # return true if base is valid and false if base is not valid
+    # Return true if base is valid and false if base is not valid
     #
     def is_valid_base
         valid_base = Conf.bases
